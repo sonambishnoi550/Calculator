@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState } from "react";
+import React, { useState } from "react";
+
 const Calculator = () => {
     const [input, setInput] = useState("");
 
@@ -18,6 +18,14 @@ const Calculator = () => {
             setInput("Error");
         }
     };
+
+    const buttons = [
+        ["0", "1", "2", "/"],
+        ["3", "4", "5", "*"],
+        ["6", "7", "8", "-"],
+        ["9", ".", "=", "+"]
+    ];
+
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100">
             <div className="bg-white p-6 rounded-lg shadow-lg w-80">
@@ -28,7 +36,7 @@ const Calculator = () => {
                     className="w-full mb-4 p-2 text-right text-black text-xl border rounded-lg"
                 />
                 <div className="grid grid-cols-4 gap-2">
-                    {["7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+"].map((button) => (
+                    {buttons.flat().map((button) => (
                         <button
                             key={button}
                             onClick={() => (button === "=" ? handleCalculate() : handleClick(button))}
@@ -47,7 +55,5 @@ const Calculator = () => {
             </div>
         </div>
     );
-}
-
-
-export default Calculator
+};
+export default Calculator;
